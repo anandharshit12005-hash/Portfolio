@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Harshit Anand — Computer and Communication Engineering student building full-stack, AI/ML, security, IoT and scalable backend systems.">
+<title>Harshit Anand | Software Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    color-scheme: light;
+    --bg: #F7F8FA;
+    --bg-raised: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --ink: #172033;
+    --ink-soft: #667085;
+    --line: #E3E7EE;
+    --accent: #356AE6;
+    --accent-dim: #EAF0FF;
+    --signal: #C87941;
+    --violet: #7867C9;
+    --nav-bg: rgba(247,248,250,0.86);
+    --terminal-top: #F4F6F9;
+    --card-hover: #FCFDFF;
+    --tag-text: #315FC8;
+    --tag-bg: #EDF2FF;
+    --tag-border: #DCE6FF;
+    --strong: #24324A;
+    --button-secondary: #FFFFFF;
+    --button-secondary-hover: #FAFBFC;
+    --hero-glow-1: rgba(53,106,230,0.055);
+    --hero-glow-2: rgba(120,103,201,0.045);
+    --contact-glow: rgba(53,106,230,0.10);
+    --shadow: rgba(23,32,51,0.20);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html[data-theme="dark"]{
+    color-scheme: dark;
+    --bg: #0E1116;
+    --bg-raised: #161B22;
+    --bg-card: #131820;
+    --ink: #ECEFF4;
+    --ink-soft: #9AA3B2;
+    --line: #29313D;
+    --accent: #5EEAD4;
+    --accent-dim: #173F3A;
+    --signal: #F2A65A;
+    --violet: #A78BFA;
+    --nav-bg: rgba(14,17,22,0.82);
+    --terminal-top: rgba(255,255,255,0.025);
+    --card-hover: #151B24;
+    --tag-text: #8EF3E4;
+    --tag-bg: #173F3A;
+    --tag-border: #235B53;
+    --strong: #F2F5F8;
+    --button-secondary: #131820;
+    --button-secondary-hover: #181F29;
+    --hero-glow-1: rgba(94,234,212,0.075);
+    --hero-glow-2: rgba(167,139,250,0.065);
+    --contact-glow: rgba(94,234,212,0.16);
+    --shadow: rgba(0,0,0,0.42);
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 12% 0%, var(--hero-glow-1), transparent 38%),
+      radial-gradient(circle at 88% 12%, var(--hero-glow-2), transparent 34%);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  ::selection{
+    background: var(--accent);
+    color: #FFFFFF;
+  }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+
+  .reveal.in{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    z-index: 50;
+  }
+
+  nav .wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo{
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo .dot{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(53,106,230,0.10);
+  }
+
+  .nav-links{
+    display: flex;
+    gap: 28px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .nav-links a{
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width .2s ease;
+  }
+
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-links a:hover::after{ width: 100%; }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding: 88px 0 80px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .terminal{
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    max-width: 650px;
+    margin-bottom: 36px;
+    box-shadow: 0 18px 50px -28px rgba(23,32,51,0.22);
+    overflow: hidden;
+  }
+
+  .terminal-bar{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--terminal-top);
+  }
+
+  .terminal-bar span{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #CBD2DE;
+  }
+
+  .terminal-body{
+    padding: 16px 18px 20px;
+    color: var(--ink-soft);
+    min-height: 130px;
+  }
+
+  .terminal-body .prompt{ color: var(--accent); }
+  .terminal-body .out{ color: var(--ink); }
+  .terminal-body div{ margin-bottom: 4px; }
+
+  .cursor{
+    display: inline-block;
+    width: 7px;
+    height: 13px;
+    background: var(--accent);
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+    vertical-align: -2px;
+  }
+
+  @keyframes blink{
+    50%{ opacity: 0; }
+  }
+
+  h1.name{
+    font-size: clamp(44px, 7vw, 76px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  h1.name .accent-text{
+    background: linear-gradient(90deg, var(--accent), var(--violet));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .role{
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+
+  .role .pipe{ color: var(--accent); }
+
+  .pitch{
+    margin-top: 22px;
+    max-width: 720px;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+
+  .hero-links{
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 1px solid var(--line);
+    transition: all .18s ease;
+  }
+
+  .btn.primary{
+    background: var(--accent);
+    color: #FFFFFF;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .btn.primary:hover{
+    box-shadow: 0 0 0 4px var(--accent-dim), 0 10px 24px -14px rgba(53,106,230,0.55);
+    transform: translateY(-1px);
+  }
+
+  .btn:not(.primary){ color: var(--ink-soft); }
+
+  .btn:not(.primary):hover{
+    border-color: var(--ink-soft);
+    color: var(--ink);
+  }
+
+  /* ---------- SECTION ---------- */
+  .section{
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-label{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::before{
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title{
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .section-intro{
+    max-width: 700px;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    font-size: 15.5px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 26px;
+    position: relative;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project:hover{
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 45px -24px rgba(23,32,51,0.22);
+  }
+
+  .project-index{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .project-name{
+    font-size: 19px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .project-name .arrow{
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--ink-soft);
+    transition: transform .2s ease, color .2s ease;
+  }
+
+  .project:hover .project-name .arrow{
+    color: var(--accent);
+    transform: translate(2px,-2px);
+  }
+
+  .project-desc{
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .project-stack{
+    margin-top: auto;
+    padding-top: 18px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 4px 9px;
+    border-radius: 5px;
+  }
+
+  .project-link{
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  /* ---------- EXPERIENCE / HIGHLIGHTS ---------- */
+  .highlights{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .highlight{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .highlight-kicker{
+    font-family: var(--mono);
+    color: var(--violet);
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .highlight h3{
+    font-size: 17px;
+    margin-bottom: 9px;
+  }
+
+  .highlight p{
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+  }
+
+  .about-text p{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    margin-bottom: 16px;
+  }
+
+  .about-text strong{
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .stack-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+
+  .stack-list{
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+
+  .stack-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .stack-row:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .stack-row span:last-child{
+    color: var(--accent);
+    text-align: right;
+  }
+
+  /* ---------- CONTACT ---------- */
+  footer.section{
+    border-bottom: none;
+    padding-bottom: 100px;
+  }
+
+  .contact-card{
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before{
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, var(--contact-glow), transparent 70%);
+  }
+
+  .contact-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 28px;
+    position: relative;
+  }
+
+  .contact-cta{
+    font-size: clamp(24px, 3.4vw, 30px);
+    font-weight: 700;
+    max-width: 540px;
+    letter-spacing: -0.01em;
+  }
+
+  .contact-sub{
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 12px;
+    max-width: 520px;
+  }
+
+  .contact-links{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .contact-links a{
+    color: var(--ink-soft);
+    transition: color .15s ease;
+  }
+
+  .contact-links a:hover{ color: var(--accent); }
+
+  /* ---------- PROFESSIONAL LIGHT THEME ---------- */
+  nav{
+    box-shadow: 0 1px 0 rgba(23,32,51,0.025);
+  }
+
+  .terminal{
+    background: var(--bg-card);
+    border-color: var(--line);
+  }
+
+  .terminal-bar span:nth-child(1){ background: #E58B82; }
+  .terminal-bar span:nth-child(2){ background: #D8B05F; }
+  .terminal-bar span:nth-child(3){ background: #6FB58B; }
+
+  .project,
+  .stack-card,
+  .contact-card{
+    box-shadow: 0 8px 28px -24px rgba(23,32,51,0.20);
+  }
+
+  .project:hover{
+    border-color: rgba(53,106,230,0.52);
+    background: var(--card-hover);
+  }
+
+  .tag{
+    color: var(--tag-text);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+  }
+
+  .section-label{
+    color: #356AE6;
+  }
+
+  .highlight-kicker{
+    color: #7867C9;
+  }
+
+  .stack-card{
+    background: var(--bg-raised);
+  }
+
+  .contact-card{
+    background:
+      linear-gradient(135deg, var(--hero-glow-1), var(--hero-glow-2)),
+      var(--bg-card);
+  }
+
+  .about-text strong{
+    color: var(--strong);
+  }
+
+  .btn:not(.primary){
+    background: var(--button-secondary);
+  }
+
+  .btn:not(.primary):hover{
+    border-color: #AEB8C8;
+    background: var(--button-secondary-hover);
+  }
+
+  /* ---------- THEME TOGGLE ---------- */
+  .nav-actions{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .theme-toggle{
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg-card);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+
+  .theme-toggle:hover{
+    transform: translateY(-1px);
+    border-color: var(--accent);
+  }
+
+  .theme-toggle svg{
+    width: 18px;
+    height: 18px;
+  }
+
+  .icon-sun{ display: none; }
+  html[data-theme="dark"] .icon-sun{ display: block; }
+  html[data-theme="dark"] .icon-moon{ display: none; }
+
+  body,
+  nav,
+  .terminal,
+  .terminal-bar,
+  .project,
+  .stack-card,
+  .contact-card,
+  .btn,
+  .tag{
+    transition:
+      background-color .28s ease,
+      background .28s ease,
+      color .28s ease,
+      border-color .28s ease,
+      box-shadow .28s ease;
+  }
+
+  @media (max-width: 820px){
+    .highlights{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px){
+    .nav-links{ display: none; }
+    .about-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .projects{ grid-template-columns: 1fr; }
+    .contact-row{ flex-direction: column; align-items: flex-start; }
+    .contact-links{ text-align: left; }
+    .contact-card{ padding: 32px 24px; }
+    header.hero{ padding-top: 64px; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation: none; }
+    html{ scroll-behavior: auto; }
+    .reveal{
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+<script>
+  (function(){
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = savedTheme || (preferredDark ? 'dark' : 'light');
+  })();
+</script>
+</head>
+
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Harshit Anand home">
+      <span class="dot"></span>harshit.dev
+    </a>
+
+    <div class="nav-actions">
+      <div class="nav-links">
+        <a href="#work">work</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Toggle light/dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="terminal" aria-label="Animated developer profile terminal">
+      <div class="terminal-bar">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="terminal-body" id="termBody"></div>
+    </div>
+
+    <h1 class="name">Harshit <span class="accent-text">Anand</span></h1>
+
+    <div class="role">
+      Software Engineer <span class="pipe">•</span>
+      Full-Stack <span class="pipe">•</span>
+      Backend <span class="pipe">•</span>
+      AI Systems
+    </div>
+
+    <p class="pitch">
+      Computer and Communication Engineering student at MIT Manipal building
+      full-stack products, scalable backends, AI/ML systems, security-focused
+      applications and IoT prototypes. I enjoy turning ambitious ideas into
+      working software — from MERN platforms and Redis-backed services to
+      encrypted voting systems and real-time MQTT dashboards.
+    </p>
+
+    <div class="hero-links">
+      <a class="btn primary" href="#work">View work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+
+      <!-- Replace resume.pdf with your actual resume file/path -->
+      <a class="btn" href="https://drive.google.com/file/d/YOUR_RESUME_ID/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-label reveal">Selected work</div>
+    <div class="section-title reveal">Featured Projects</div>
+    <p class="section-intro reveal">
+      A selection of projects across full-stack engineering, distributed and
+      backend systems, applied AI/ML, cybersecurity, IoT.
+    </p>
+
+    <div class="projects">
+
+      <article class="project reveal">
+        <!-- Replace # with your actual repository/live URL -->
+        <a class="project-link" href="https://github.com/Harshitdot1106/travel_plann" aria-label="View AI Travel Planner project"></a>
+        <div class="project-index">01 / full-stack + AI</div>
+        <div class="project-name">
+          AI Travel Planner
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          An AI-powered MERN travel platform that generates personalized itineraries using LLMs,
+          interactive maps and intelligent destination recommendations. Optimized with Redis
+          caching, scalable backend services and a production-oriented architecture for fast,
+          personalized trip planning.
+        </div>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Redis</span>
+    
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/crystal-cast-vote" aria-label="View Secure Online Voting Platform project"></a>
+        <div class="project-index">02 / cybersecurity</div>
+        <div class="project-name">
+          Secure Online Voting Platform
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          An e-voting platform focused on confidentiality, integrity and verifiability.
+          Combines a React interface with Django REST APIs and cryptographic techniques
+          including RSA, SHA-256 and Paillier homomorphic encryption.
+        </div>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">Django</span>
+          <span class="tag">REST API</span>
+          <span class="tag">RSA</span>
+          <span class="tag">SHA-256</span>
+          <span class="tag">Paillier</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/IOT-Application" aria-label="View IoT Anti-Theft System project"></a>
+        <div class="project-index">03 / IoT + realtime</div>
+        <div class="project-name">
+          IoT Anti-Theft System
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          A software-first anti-theft prototype using ESP32 simulation, MQTT messaging,
+          ARM/DISARM control topics and simulated GPS routes. Includes a real-time web
+          dashboard with map visualization and alert handling.
+        </div>
+        <div class="project-stack">
+          <span class="tag">ESP32</span>
+          <span class="tag">MQTT</span>
+          <span class="tag">Wokwi</span>
+          <span class="tag">HiveMQ</span>
+          <span class="tag">Leaflet</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/Rewear" aria-label="View Smart Bus Scheduling project"></a>
+        <div class="project-index">04 / Fashion Technology</div>
+        <div class="project-name">
+          ReWear - Sustainable Fashion Marketplace
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+         Production-ready sustainable fashion marketplace where users can buy and sell pre-owned
+          clothing while earning eco-rewards. Features JWT authentication, real-time chat with
+          Socket.io, advanced search, image uploads, reviews, admin dashboard and responsive
+          React + TypeScript UI.
+        </div>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Socket.io</span>
+          <span class="tag">Tailwind</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/icd-NAMASTE" aria-label="View Pet Care Platform project"></a>
+        <div class="project-index">05 / MERN</div>
+           <div class="project-name">
+          NAMASTE ICD Intelligence Platform
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+  Developed an AI-assisted healthcare platform for ICD-NAMASTE medical data mapping using the MERN stack. Integrated BioBERT for biomedical entity recognition and intelligent ICD code recommendations, along with secure authentication, role-based access and an intuitive dashboard for efficient large-scale clinical mapping workflows.
+</div>
+        
+        <div class="project-stack">
+          <span class="tag">MongoDB</span>
+          <span class="tag">Django</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">BioBERT</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/CNN-Model" aria-label="View CAPTCHA CNN project"></a>
+        <div class="project-index">06 / machine learning</div>
+        <div class="project-name">
+          CAPTCHA Recognition with CNN
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          A computer-vision project exploring convolutional neural networks for CAPTCHA
+          recognition. Focused on image preprocessing, learned visual features and
+          end-to-end prediction for noisy character-based inputs.
+        </div>
+        <div class="project-stack">
+          <span class="tag">Python</span>
+          <span class="tag">CNN</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Deep Learning</span>
+        </div>
+      </article>
+
+     
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/campus-hub" aria-label="View Learning Management System project"></a>
+        <div class="project-index">07 / product engineering</div>
+        <div class="project-name">
+          Learning Management System
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          A MERN-based learning platform with structured frontend and backend workflows,
+          API integration and user-facing course experiences. Built as a practical
+          full-stack system rather than a static interface.
+        </div>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">JWT</span>
+         
+        </div>
+      </article>
+
+    
+
+      <article class="project reveal">
+        <a class="project-link" href="https://github.com/Harshitdot1106/FinanceDashBoard" aria-label="View Financial Analytics Dashboard project"></a>
+        <div class="project-index">08 / business intelligence</div>
+        <div class="project-name">
+          Financial Analytics Dashboard
+          <span class="arrow">↗</span>
+        </div>
+        <div class="project-desc">
+          Designed an interactive Tableau dashboard to analyze financial performance, KPI trends,
+          customer insights and business metrics. Built dynamic dashboards using calculated
+          fields, filters and visual analytics to support data-driven decision making.
+        </div>
+        <div class="project-stack">
+          <span class="tag">Tableau</span>
+          <span class="tag">Python</span>
+          <span class="tag">EDA</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+     
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-label reveal">About</div>
+    <div class="section-title reveal">How I build</div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+       
+
+        <p>
+          I have built with <strong>React, Node.js, Express, MongoDB, Redis, Django,
+          PostgreSQL and Oracle</strong>, and I like understanding the infrastructure behind
+          an application — caching, APIs, authentication, databases, containers,
+          messaging and deployment architecture.
+        </p>
+
+        <p>
+          My current direction is toward stronger <strong>backend and software engineering</strong>
+          fundamentals: scalable APIs, distributed systems, system design, Docker,
+          Kubernetes, load balancing and production-oriented architecture, while continuing
+          to use AI where it creates real product value.
+        </p>
+
+        <p>
+          I care about projects that are more than portfolio screenshots. I like building
+          working systems with real data flows, integrations and technical trade-offs.
+        </p>
+      </div>
+
+      <aside class="stack-card reveal">
+        <div class="stack-list">
+          <div class="stack-row">
+            <span>Languages</span>
+            <span>C++, Java, C, Python, JavaScript, TypeScript</span>
+          </div>
+
+          <div class="stack-row">
+            <span>Frontend</span>
+            <span>React, Vite, Tailwind, React Native</span>
+          </div>
+
+          <div class="stack-row">
+            <span>Backend</span>
+            <span>Node.js, Express, Django, REST APIs</span>
+          </div>
+
+          <div class="stack-row">
+            <span>Data</span>
+            <span>MongoDB, PostgreSQL, Oracle, Redis</span>
+          </div>
+
+          <div class="stack-row">
+            <span>Systems</span>
+            <span>Docker, MQTT, Microservices</span>
+          </div>
+
+          <div class="stack-row">
+            <span>AI / ML</span>
+            <span>Python, CNNs, Data Analysis</span>
+          </div>
+
+          <div class="stack-row">
+            <span>Currently</span>
+            <span>DSA, System Design, BlockChain</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="section" id="contact">
+  <div class="wrap">
+    <div class="section-label reveal">Contact</div>
+
+    <div class="contact-card reveal">
+      <div class="contact-row">
+        <div>
+          <div class="contact-cta">
+            Open to software engineering internships, backend and full-stack opportunities,
+            and ambitious technical collaborations.
+          </div>
+          <p class="contact-sub">
+            If you're building something interesting across software, AI, infrastructure
+            or developer products, I'd be glad to connect.
+          </p>
+        </div>
+
+        <div class="contact-links">
+          <!-- Replace the placeholders below with your real links -->
+          <a href="mailto:anand.harsht2005@gmail.com " target="_blank ">anand.harsht2005@gmail.com</a>
+          <a href="https://github.com/Harshitdot1106" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/harshit-anand-84372a231/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- Typing terminal effect ----------
+  const lines = [
+    { prompt: '$ ', text: 'whoami', cls: '' },
+    { prompt: '> ', text: 'harshit anand — software engineer', cls: 'out' },
+    { prompt: '$ ', text: 'cat focus.txt', cls: '' },
+    { prompt: '> ', text: 'backend, full-stack, AI, scalable systems', cls: 'out' }
+  ];
+
+  const body = document.getElementById('termBody');
+  let lineIndex = 0;
+
+  function typeLine(){
+    if(lineIndex >= lines.length){
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+
+      if(body.lastElementChild){
+        body.lastElementChild.appendChild(cursor);
+      }
+
+      return;
+    }
+
+    const { prompt, text, cls } = lines[lineIndex];
+
+    const div = document.createElement('div');
+
+    const promptSpan = document.createElement('span');
+    promptSpan.className = 'prompt';
+    promptSpan.textContent = prompt;
+    div.appendChild(promptSpan);
+
+    const textSpan = document.createElement('span');
+    if(cls) textSpan.className = cls;
+    div.appendChild(textSpan);
+
+    body.appendChild(div);
+
+    let charIndex = 0;
+    const speed = cls === 'out' ? 12 : 38;
+
+    const interval = setInterval(() => {
+      textSpan.textContent += text[charIndex];
+      charIndex++;
+
+      if(charIndex >= text.length){
+        clearInterval(interval);
+        lineIndex++;
+        setTimeout(typeLine, 220);
+      }
+    }, speed);
+  }
+
+  typeLine();
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach((el) => observer.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+  // ---------- Light / dark mode ----------
+  const themeToggle = document.getElementById('themeToggle');
+
+  function updateThemeButton(){
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.dataset.theme;
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem('portfolio-theme', nextTheme);
+    updateThemeButton();
+  });
+
+  updateThemeButton();
+
+</script>
+
+</body>
+</html>
